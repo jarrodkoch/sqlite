@@ -16,5 +16,10 @@
   <div id="container">
     <strong>Ready to create an app?</strong>
     <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p>Or maybe you'd like to insert a value into sqlite?</p>
+    <ion-input [(ngModel)]="value"></ion-input>
+    <ion-button (click)="sendValueToDatabase()">Submit</ion-button>
+    <ion-label>Result:</ion-label>
+    <div>{{valueFromDatabase}}</div>
   </div>
 </ion-content>

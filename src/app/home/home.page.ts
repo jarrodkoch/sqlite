@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { DatabaseService } from '../../service/database.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  value: string;
+  valueFromDatabase: string;
 
-  constructor() {}
+  constructor(private databaseService: DatabaseService) {}
 
+  async sendValueToDatabase() {
+    console.log(`value = ${this.value}`);
+    await this.databaseService.setValue('value', this.value);
+
+    this.valueFromDatabase = await this.databaseService.getValue('value');
+    console.log(`database value = ${this.valueFromDatabase}`);
+  }
 }
